@@ -29,11 +29,7 @@ DataDirectory <- paste(RootDirectory,"/data",sep = "")
 NRSAgesDataDirectory <- paste(RootDirectory,"/data/NRSAgesData",sep = "")
 GraphsDirectory <- paste(RootDirectory,"/graphs",sep = "")
 
-SavePath <- ""
-AgeSexDeathsWeeklyPath <- ""
-ScriptWD <- ""
-
-setwd(ScriptWD) # wd is directory of script
+setwd(RootDirectory) # wd is directory of script
 
 
 ###################################################
@@ -60,8 +56,8 @@ NoDays = 60 # How many historic days on the graphs?
 #                                                          #
 ############################################################
 
-source("NRS_DeathByHB_DataExcelRead.R") # Read the NRS death by HB data and save it.
+source("NRSDeaths_DataExcelRead.R") # Read the NRS death by HB data and save it.
 
-source("NRS_DeathsAgeSexWeekly_2000-2019_DataCSVRead.R") # Read 2000-2019 deaths data
+source("NRSDeaths_2000-2019DataCSVRead.R") # Read 2000-2019 deaths data
 
-setwd(ScriptWD)
+setwd(RootDirectory)
