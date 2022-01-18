@@ -23,6 +23,12 @@ library(facetscales)
 #                         #
 ###########################
 
+# Set working directories
+RootDirectory <- getwd() # This should be the directory in which the .R file is found.
+DataDirectory <- paste(RootDirectory,"/data",sep = "")
+NRSAgesDataDirectory <- paste(RootDirectory,"/data/NRSAgesData",sep = "")
+GraphsDirectory <- paste(RootDirectory,"/graphs",sep = "")
+
 SavePath <- ""
 AgeSexDeathsWeeklyPath <- ""
 ScriptWD <- ""

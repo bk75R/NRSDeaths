@@ -7,10 +7,10 @@
 ################################################
 
 # Set WD to ages data path
-setwd(AgeSexDeathsWeeklyPath)
+setwd(NRSAgesDataDirectory)
 
 # Get list of .csv files in directory
-DeathsFilesList = list.files(path = AgeSexDeathsWeeklyPath,
+DeathsFilesList = list.files(path = NRSAgesDataDirectory,
                              pattern = "*.csv",
                              ignore.case = TRUE
                              )
@@ -224,4 +224,4 @@ DeathsTogether = bind_rows(select(DeathsWeekly_ExcessBaseline_trim,Date,Age,Deat
   mutate(Excess = Deaths[Cause == "All"] - Deaths[Cause == "Baseline"])
 
 
-setwd(ScriptWD)
+setwd(RootDirectory)

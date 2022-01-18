@@ -1,11 +1,11 @@
+setwd(DataDirectory)
+
 # Read the file from the website.
 NRSDeathsURL = "https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2021.xlsx"
 
 GraphFileNameRoot = as.character(format(Sys.Date(),"%Y-%m-%d"))
 NRSDeathsFileName = paste(GraphFileNameRoot,"_NRS_HBdeaths.xlsx",sep="")
 NRSDeathsColNames = c("Week","HBcode","HB","Sex","Age","Cause","Deaths")
-
-setwd(SavePath)
 
 ##########################################
 #
@@ -81,4 +81,4 @@ NRSDeaths_NonCOVIDSum = NRSDeaths_NonCOVIDSum %>%
   relocate(Cause, .before = "Deaths")
  
 # Reset WD to ScriptWD for next script
-setwd(ScriptWD)
+setwd(RootDirectory)
