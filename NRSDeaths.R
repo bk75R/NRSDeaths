@@ -60,4 +60,8 @@ source("NRSDeaths_DataExcelRead.R") # Read the NRS death by HB data and save it.
 
 source("NRSDeaths_2000-2019DataCSVRead.R") # Read 2000-2019 deaths data
 
+source("NRSDeaths_GraphsCheck.R") # Graph deaths data to check it's all there.
+
+source("NRSDeaths_InquiryGraphs.R") # Inquiry graphs, various on cumulative excess deaths and gradient changes.
+
 setwd(RootDirectory)

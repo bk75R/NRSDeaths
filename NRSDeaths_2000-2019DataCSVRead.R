@@ -223,5 +223,14 @@ DeathsTogether = bind_rows(select(DeathsWeekly_ExcessBaseline_trim,Date,Age,Deat
   group_by(Date,Age) %>% # Age factors are named differently.
   mutate(Excess = Deaths[Cause == "All"] - Deaths[Cause == "Baseline"])
 
+# Reorder factors
+DeathsTogether$Age <- factor(DeathsTogether$Age, levels=c("0","1 to 4","5 to 9","10 to 14",
+                                                          "15 to 19","20 to 24","25 to 29",
+                                                          "30 to 34","35 to 39","40 to 44",
+                                                          "45 to 49","50 to 54","55 to 59",
+                                                          "60 to 64","65 to 69","70 to 74",
+                                                          "75 to 79","80 to 84","85 to 89",
+                                                          "90+"))
+
 
 setwd(RootDirectory)
