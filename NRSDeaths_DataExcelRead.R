@@ -1,7 +1,8 @@
 setwd(DataDirectory)
 
 # Read the file from the website.
-NRSDeathsURL = "https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2021.xlsx"
+#NRSDeathsURL = "https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2021.xlsx" # URL as it was before 24/02/22
+NRSDeathsURL <- "https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2022.xlsx"# New URL post-24/02/22
 
 GraphFileNameRoot = as.character(format(Sys.Date(),"%Y-%m-%d"))
 NRSDeathsFileName = paste(GraphFileNameRoot,"_NRS_HBdeaths.xlsx",sep="")
