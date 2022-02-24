@@ -165,21 +165,25 @@ DeathsWeekly_mean_2015_2019$Age = recode_factor(DeathsWeekly_mean_2015_2019$Age,
 # Create dates for 2020 and 2021 attached to DeathsWeekly_mean_2015_2019 data
 # Basically, get 2020-W5-1 etc for each date and repeat dataset for 2021
 
-DeathsWeekly_ExcessBaseline = rbind.data.frame(DeathsWeekly_mean_2015_2019,DeathsWeekly_mean_2015_2019)
+DeathsWeekly_ExcessBaseline = rbind.data.frame(DeathsWeekly_mean_2015_2019,DeathsWeekly_mean_2015_2019,DeathsWeekly_mean_2015_2019)
+# This uses 2015-2019 deaths for the baseline for 2022. This should be updated to match latest NRS method (uses 2016-2019 + 2021).
 Year2020 = as.data.frame(x = rep("2020",nrow(DeathsWeekly_mean_2015_2019)))
-colnames(Year2020) = "Year"
+colnames(Year2020) <- "Year"
 Year2021 = as.data.frame(x = rep("2021",nrow(DeathsWeekly_mean_2015_2019)))
-colnames(Year2021) = "Year"
-Year20202021 = rbind.data.frame(Year2020,Year2021)
-colnames(Year20202021) = "Year"
-DeathsWeekly_ExcessBaseline = cbind.data.frame(Year20202021,DeathsWeekly_ExcessBaseline)
-rm(Year2020,Year2021,Year20202021)
+colnames(Year2021) <- "Year"
+Year2022 = as.data.frame(x = rep("2022",nrow(DeathsWeekly_mean_2015_2019)))
+colnames(Year2022) <- "Year"
+Year2020_2022 = rbind.data.frame(Year2020,Year2021,Year2022)
+colnames(Year2020_2022) = "Year"
+DeathsWeekly_ExcessBaseline = cbind.data.frame(Year2020_2022,DeathsWeekly_ExcessBaseline)
+rm(Year2020,Year2021,Year2022,Year2020_2022)
 
 DeathsWeekly_ExcessBaseline = DeathsWeekly_ExcessBaseline %>%
   mutate(ISODate = paste(Year,"-W",sprintf("%02d",as.integer(Week)),"-","1",sep = "")) %>%
   mutate(Date = ISOweek2date(ISODate)) %>%
   relocate(ISODate) %>%
-  relocate(Date)
+  relocate(Date) %>%
+  filter(ISODate != "2022-W01-1") # Remove W01 of 2022 since W53 of 2021 overlaps it.
 
 
 # Calculate excess deaths
@@ -202,8 +206,6 @@ NRSDeaths_AllSum_refactored = NRSDeaths_AllSum %>%
   filter(Age != "90 to 94", Age != "95+")
 NRSDeaths_AllSum_refactored = rbind.data.frame(NRSDeaths_AllSum_refactored,NRSDeaths_AllSum_oldest_agg)
 rm(NRSDeaths_AllSum_oldest_agg,aggAges,NRSDeaths_AllSum_oldest)
-
-
 
 # Now that 2015-2019 deaths and 2020-2021 deaths are factored in the same way, calculate the excess.
 # How?
