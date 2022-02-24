@@ -97,12 +97,12 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
 ###################################
 #
 #
-# Average Weekly deaths by age (baseline for 2020-2021) (Scotland)
+# Average Weekly deaths by age (baseline for 2020-2022) (Scotland)
 #
 #
 ###################################
 
-GraphFileName = " NRS excess deaths by age (baseline for 2020-2021).png"
+GraphFileName = " NRS excess deaths by age (baseline for 2020-2022).png"
 
 NRSWeeklyDeaths_Baseline_Graph = ggplot(data = DeathsWeekly_ExcessBaseline,
                                        mapping = aes(x=Date,
@@ -117,7 +117,7 @@ NRSWeeklyDeaths_Baseline_Graph = ggplot(data = DeathsWeekly_ExcessBaseline,
   scale_y_continuous(name = "Weekly Deaths",
                      limits = c(0,NA),
                      labels = scales::comma)+
-  ggtitle("NRS excess deaths by age (baseline for 2020-2021)",
+  ggtitle("NRS excess deaths by age (baseline for 2020-2022)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
   geom_line(size = 0.5,
@@ -333,11 +333,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
 
 GraphCaption <- GraphCaptionOld
 
-
-
-
-
-
 ###########################################
 
 ###################################
@@ -349,7 +344,7 @@ GraphCaption <- GraphCaptionOld
 ###################################
 #graphheight = 2*graphheight
 
-GraphFileName = " Excess Deaths in Scotland (2020-2021).png"
+GraphFileName = " Excess Deaths in Scotland (2020-2022).png"
 
 NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All"),
                                       mapping = aes(x=Date,
@@ -366,7 +361,7 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All
   scale_y_continuous(name = "Weekly Deaths",
                      limits = c(-25,100),
                      labels = scales::comma)+
-  ggtitle("Excess Deaths in Scotland (2020-2021)",
+  ggtitle("Excess Deaths in Scotland (2020-2022)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
   # geom_hline(yintercept = 0,
