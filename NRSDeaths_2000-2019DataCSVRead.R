@@ -165,6 +165,30 @@ DeathsWeekly_mean_2015_2019$Age = recode_factor(DeathsWeekly_mean_2015_2019$Age,
 # Create dates for 2020 and 2021 attached to DeathsWeekly_mean_2015_2019 data
 # Basically, get 2020-W5-1 etc for each date and repeat dataset for 2021
 
+# Do the same for DeathsWeekly_pivot_aggregate_2015_2019 (because...graphing order later on.)
+DeathsWeekly_pivot_aggregate_2015_2019$Age = recode_factor(DeathsWeekly_pivot_aggregate_2015_2019$Age,
+                                                "0" = "0",
+                                                "1-4" = "1 to 4",
+                                                "5-9" = "5 to 9",
+                                                "10-14" = "10 to 14",
+                                                "15-19" = "15 to 19",
+                                                "20-24" = "20 to 24",
+                                                "25-29" = "25 to 29",
+                                                "30-34" = "30 to 34",
+                                                "35-39" = "35 to 39",
+                                                "40-44" = "40 to 44",
+                                                "45-49" = "45 to 49",
+                                                "50-54" = "50 to 54",
+                                                "55-59" = "55 to 59",
+                                                "60-64" = "60 to 64",
+                                                "65-69" = "65 to 69",
+                                                "70-74" = "70 to 74",
+                                                "75-79" = "75 to 79",
+                                                "80-84" = "80 to 84",
+                                                "85-89" = "85 to 89",
+                                                "90+" = "90+")
+
+
 DeathsWeekly_ExcessBaseline = rbind.data.frame(DeathsWeekly_mean_2015_2019,DeathsWeekly_mean_2015_2019,DeathsWeekly_mean_2015_2019)
 # This uses 2015-2019 deaths for the baseline for 2022. This should be updated to match latest NRS method (uses 2016-2019 + 2021).
 Year2020 = as.data.frame(x = rep("2020",nrow(DeathsWeekly_mean_2015_2019)))
