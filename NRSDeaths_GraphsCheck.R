@@ -198,7 +198,7 @@ NRSWeeklyDeaths_Average_Graph = ggplot(data = DeathsWeekly_mean_2015_2019,
   scale_x_continuous(name = "Week number")+
   scale_y_continuous(name = "Weekly Deaths",
                      limits = c(0,NA),
-                     labels = scales::comma)+
+                     labels = label_comma(accuracy = NULL))+
   ggtitle("NRS Weekly Deaths by Age (2015-2019, average)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
@@ -242,7 +242,7 @@ NRSWeeklyDeaths_Baseline_Graph = ggplot(data = DeathsWeekly_ExcessBaseline,
                minor_breaks = "1 month")+
   scale_y_continuous(name = "Weekly Deaths",
                      limits = c(0,NA),
-                     labels = scales::comma)+
+                     labels = label_comma(accuracy = NULL))+
   ggtitle("NRS excess deaths by age (baseline for 2020-2022)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
@@ -290,7 +290,7 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogether,
                )+
   scale_y_continuous(name = "Weekly Deaths",
                      limits = c(0,NA),
-                     labels = scales::comma)+
+                     labels = label_number(accuracy = NULL))+
   ggtitle("DeathsTogether",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
@@ -463,6 +463,62 @@ GraphCaption <- GraphCaptionOld
 ###################################
 #
 #
+# ExcessDeaths - faceted
+#
+#
+###################################
+#graphheight = 2*graphheight
+
+GraphFileName = " Excess Deaths in Scotland (2020-2022) - faceted.png"
+
+NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All"),
+                                      mapping = aes(x=Date,
+                                                    y=Excess,
+                                                    group=Age)
+                                      )+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = 'white', color = 'white'),
+        plot.background = element_rect(fill = 'white', color = 'white'),
+        legend.position="bottom",
+        legend.justification = "centre",
+        strip.background = element_blank(),
+        strip.placement = "outside")+
+  scale_x_date(#limits = c(as.Date("2021-04-01"),NA),
+    name = "Date",
+    #date_breaks = "12 months",
+    breaks = c(as.Date("2020-01-01"),as.Date("2021-01-01"),as.Date("2022-01-01")),
+    date_labels = "%Y")+
+  scale_y_continuous(name = "Weekly Deaths",
+                     #limits = c(-25,100),
+                     labels = label_number(accuracy = NULL))+
+  ggtitle("Excess Deaths in Scotland (2020-2022)",
+          subtitle = GraphSubtitle)+
+  labs(caption = GraphCaption)+
+  geom_line(size = 0.5,
+            alpha = 1,
+            #linetype = 1,
+            #aes(),
+            show.legend = TRUE)+
+  facet_wrap(vars(Age),
+             ncol = 4,
+             scales = "free_y")
+
+#Save graph
+ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
+       plot = NRSWeeklyDeaths_Excess_Graph,
+       device="png",
+       width=graphwidth*2,
+       height=graphheight,
+       units="mm",
+       dpi=300
+)
+
+#graphheight = 0.5*graphheight
+###########################################
+
+###################################
+#
+#
 # ExcessDeaths
 #
 #
@@ -477,29 +533,25 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All
                                                     colour=Age)
 )+
   theme_bw()+
-  scale_x_date(limits = c(as.Date("2020-12-01"),NA),
+  scale_x_date(#limits = c(as.Date("2020-12-01"),NA),
                name = "Date (MM/YY)",
                date_breaks = "1 month",
-               date_labels = "%m/%y"#,
-               #minor_breaks = "1 week"
+               date_labels = "%m/%y"
   )+
   scale_y_continuous(name = "Weekly Deaths",
-                     limits = c(-25,100),
-                     labels = scales::comma)+
+                     limits = c(NA,NA),
+                     labels = label_number(accuracy = NULL))+
   ggtitle("Excess Deaths in Scotland (2020-2022)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
-  # geom_hline(yintercept = 0,
-  #            linetype = "dashed",
-  #            colour = "grey50")+
   geom_line(size = 0.5,
             alpha = 1,
             #linetype = 1,
             #aes(),
             show.legend = TRUE)#+
   # facet_wrap(vars(Age),
-  #            ncol = 1,
-  #            scales = "fixed")
+  #          ncol = 4,
+  #          scales = "fixed")
 
 #Save graph
 ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
