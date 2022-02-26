@@ -88,30 +88,39 @@ NRSWeeklyDeaths_2015_2019_Graph = ggplot(data = DeathsWeekly_pivot_aggregate_201
         legend.justification = "centre",
         strip.background = element_blank(),
         strip.placement = "outside",
-        panel.grid = element_blank(),
-        plot.caption = element_text(hjust = 0))+
-  scale_x_date(name = "Date",
-               date_breaks = "12 months",
-               date_labels = "%Y",
-               #minor_breaks = "3 months",
-               labels = YearLabelPositions2015_2019)+
+        # panel.grid = element_blank(),
+        plot.caption = element_text(hjust = 0)
+        )+
+  scale_x_date(#limits = c(as.Date("2021-04-01"),NA),
+    name = "Date",
+    #date_breaks = "12 months",
+    breaks = c(as.Date("2015-01-01"),
+               as.Date("2016-01-01"),
+               as.Date("2017-01-01"),
+               as.Date("2018-01-01"),
+               as.Date("2019-01-01")),
+    date_labels = "%Y")+
+  # scale_x_date(name = "Date",
+  #              date_breaks = "12 months",
+  #              date_labels = "%Y",
+  #              #minor_breaks = "3 months",
+  #              labels = YearLabelPositions2015_2019)+
   scale_y_continuous(name = "Weekly Deaths",
                      limits = c(NA,NA),
                      labels = label_comma(accuracy = 1))+
   ggtitle("NRS Weekly Deaths by Age (2015-2019)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
-  geom_vline(data = VlinesYears,
-             aes(xintercept = Date),
-             colour = "grey75",
-             show.legend = FALSE)+
-  
-  geom_line(size = 0.2,
+  # geom_vline(data = VlinesYears,
+  #            aes(xintercept = Date),
+  #            colour = "grey75",
+  #            show.legend = FALSE)+
+  geom_line(size = 0.25,
             alpha = 1,
             linetype = 1,
             show.legend = TRUE)+
   facet_wrap(vars(Age),
-             ncol = 5,
+             ncol = 4,
              scales = "free_y")
 
 #Save graph
@@ -148,8 +157,9 @@ NRSWeeklyDeaths_Average_Graph = ggplot(data = DeathsWeekly_mean_2015_2019,
         legend.justification = "centre",
         strip.background = element_blank(),
         strip.placement = "outside",
-        panel.grid = element_blank(),
-        plot.caption = element_text(hjust = 0))+
+        # panel.grid = element_blank(),
+        plot.caption = element_text(hjust = 0)
+        )+
   scale_x_continuous(name = "Week number",
                      breaks = c(0,10,20,30,40,50))+
   scale_y_continuous(name = "Weekly Deaths",
@@ -482,7 +492,10 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All
         legend.position="bottom",
         legend.justification = "centre",
         strip.background = element_blank(),
-        strip.placement = "outside")+
+        strip.placement = "outside",
+        #panel.grid = element_blank(),
+        plot.caption = element_text(hjust = 0)
+        )+
   scale_x_date(#limits = c(as.Date("2021-04-01"),NA),
     name = "Date",
     #date_breaks = "12 months",
