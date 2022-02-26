@@ -39,7 +39,7 @@ DeathsTogetherCum2020_2021 <- filter(DeathsTogetherCum2020_2022,Date < as.Date("
 ###############################################################################
 #
 #
-# Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group)
+# Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group)
 #
 #
 ###############################################################################
@@ -56,7 +56,10 @@ GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/
 
 GraphFileName = " Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group).png"
 
-NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2022,
+DeathsTogetherCum2020_2022_graph <- DeathsTogetherCum2020_2022 %>%
+  filter(WeekNo <= isoweek(max(DeathsTogetherCum2020_2022$Date)) + 2)
+
+NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2022_graph,
                                       mapping = aes(x=WeekNo,
                                                     y=cumExcess,
                                                     colour = Year,
@@ -75,9 +78,12 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2022,
         panel.grid = element_blank(),
         plot.caption = element_text(hjust = 0))+
   scale_x_continuous(name = "Week number",
-                     breaks = c(0,10,20,30,40,50))+
+                     #breaks = c(0,10,20,30,40,50),
+                     labels = label_comma(accuracy = 1),
+                     limits = c(NA,NA)
+                     )+
   scale_y_continuous(name = "Cumulative Excess Deaths",
-                     labels = scales::comma)+
+                     labels = label_comma(accuracy = NULL))+
   ggtitle("Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group)",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption,
