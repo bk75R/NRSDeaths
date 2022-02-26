@@ -16,6 +16,7 @@ library(stringr)
 library(lubridate)
 library(ISOweek)
 library(facetscales)
+library(scales)
 
 ###########################
 #                         #
