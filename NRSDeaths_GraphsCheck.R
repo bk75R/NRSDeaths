@@ -7,6 +7,14 @@ ScaleDeathPointTypes <- c("All" = 1,
 LineLabels <- c("All" = "All causes deaths (2021)",
                 "Baseline" = "Expected deaths (based on 2015-2019 deaths)")
 
+VlinesYears <- data.frame(Date = c(as.Date("2015-01-01"),
+                                   as.Date("2016-01-01"),
+                                   as.Date("2017-01-01"),
+                                   as.Date("2018-01-01"),
+                                   as.Date("2019-01-01")),
+                                   Year = c(2015,2016,2017,2018,2019)
+                          )
+
 
 ###################################
 #
@@ -46,6 +54,67 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        plot = NRSWeeklyDeaths_2015_2019_Graph,
        device="png",
        width=graphwidth,
+       height=graphheight,
+       units="mm",
+       dpi=300
+)
+
+###########################################
+
+
+###################################
+#
+#
+# Weekly deaths by age (All) (Scotland) - faceted
+#
+#
+###################################
+
+GraphFileName = " NRS Weekly Deaths by Age (2015-2019) - faceted.png"
+
+NRSWeeklyDeaths_2015_2019_Graph = ggplot(data = DeathsWeekly_pivot_aggregate_2015_2019,
+                                         mapping = aes(x=Date,
+                                                       y=Deaths,
+                                                       group=Age)
+)+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = 'white', color = 'white'),
+        plot.background = element_rect(fill = 'white', color = 'white'),
+        legend.position="bottom",
+        legend.justification = "centre",
+        strip.background = element_blank(),
+        strip.placement = "outside",
+        panel.grid = element_blank(),
+        plot.caption = element_text(hjust = 0))+
+  scale_x_date(name = "Date",
+               date_breaks = "12 months",
+               date_labels = "%Y",
+               minor_breaks = "3 months")+
+  scale_y_continuous(name = "Weekly Deaths",
+                     limits = c(NA,NA),
+                     labels = label_comma(accuracy = 1))+
+  ggtitle("NRS Weekly Deaths by Age (2015-2019)",
+          subtitle = GraphSubtitle)+
+  labs(caption = GraphCaption)+
+  geom_vline(data = VlinesYears,
+             aes(xintercept = Date),
+             colour = "grey75",
+             show.legend = FALSE)+
+  
+  geom_line(size = 0.2,
+            alpha = 1,
+            linetype = 1,
+            show.legend = TRUE)+
+  
+  facet_wrap(vars(Age),
+             ncol = 5,
+             scales = "free_y")
+
+#Save graph
+ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
+       plot = NRSWeeklyDeaths_2015_2019_Graph,
+       device="png",
+       width=500,
        height=graphheight,
        units="mm",
        dpi=300
