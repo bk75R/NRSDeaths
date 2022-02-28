@@ -330,9 +330,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
 #
 ###################################
 
-GraphCaptionOld <- GraphCaption
-GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/weekly-and-monthly-data-on-births-and-deaths/\ndeaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
-
 GraphFileName = " Deaths - All Causes and Expected (faceted by age group).png"
 
 NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Date >= as.Date("2021-04-01")),
@@ -379,8 +376,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        dpi=300
 )
 
-GraphCaption <- GraphCaptionOld
-
 DeathsTogetherSummary <- DeathsTogether %>% 
   filter(Date >= as.Date("2021-04-01")) %>%
   select(Age,Deaths,Cause) %>%
@@ -405,9 +400,6 @@ DeathsTogetherSummarySum = sum(DeathsTogetherSummary$Difference)
 #
 #
 ###################################
-
-GraphCaptionOld <- GraphCaption
-GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/weekly-and-monthly-data-on-births-and-deaths/\ndeaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
 
 GraphFileName = " Deaths - All Causes and Expected with fit lines (faceted by age group).png"
 
@@ -466,7 +458,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        dpi=300
 )
 
-GraphCaption <- GraphCaptionOld
 
 ###########################################
 
