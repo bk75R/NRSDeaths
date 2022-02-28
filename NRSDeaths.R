@@ -45,7 +45,7 @@ GraphSubtitle = paste("Graph by @bouncingkitten | https://www.drowningindata.blo
 # and the data files used for deaths are:
 # 
 # "Weekly deaths by sex and age group in NHS health boards, 2020 - 2022"
-# https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2022.xlsx"
+# https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2022.xlsx
 # 
 # "Weekly deaths by sex and age group, 2000 to 2019"
 # https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-2000-2019.zip
