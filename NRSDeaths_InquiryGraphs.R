@@ -51,9 +51,6 @@ YearLineThicknesses = c("2020" = 0.25,
                         "2021" = 1,
                         "2022" = 1)
 
-GraphCaptionOld <- GraphCaption
-GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/\nweekly-and-monthly-data-on-births-and-deaths/deaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
-
 GraphFileName = " Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group).png"
 
 DeathsTogetherCum2020_2022_graph <- DeathsTogetherCum2020_2022 %>%
@@ -112,9 +109,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        dpi=300
 )
 
-GraphCaption <- GraphCaptionOld
-
-
 ###############################################################################
 #
 #
@@ -129,9 +123,6 @@ YearColours = c("2020" = "grey25",
 YearLineThicknesses = c("2020" = 0.25,
                         "2021" = 1,
                         "2022" = 1)
-
-GraphCaptionOld <- GraphCaption
-GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/\nweekly-and-monthly-data-on-births-and-deaths/deaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
 
 GraphFileName = " Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group).png"
 
@@ -184,8 +175,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        units="mm",
        dpi=300
 )
-
-GraphCaption <- GraphCaptionOld
 
 ###############################################################################
 
@@ -401,9 +390,6 @@ GraphCaption <- GraphCaptionOld
 YearColours = c("2020" = "red",
                 "2021" = "blue")
 
-GraphCaptionOld <- GraphCaption
-GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/weekly-and-monthly-data-on-births-and-deaths/\ndeaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
-
 GraphFileName = " Gradient of Cumulative Excess Deaths in Scotland, 2021 (faceted by age group).png"
 
 NRSWeeklygradCumExcessDeaths_Graph = ggplot(#DeathsTogetherCum2020_2021,
@@ -457,8 +443,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        dpi=300
 )
 
-GraphCaption <- GraphCaptionOld
-
 ###############################################################################
 #
 #
@@ -469,9 +453,6 @@ GraphCaption <- GraphCaptionOld
 
 YearColours = c("2020" = "red",
                 "2021" = "blue")
-
-GraphCaptionOld <- GraphCaption
-GraphCaption <- "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/\nweekly-and-monthly-data-on-births-and-deaths/deaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
 
 GraphFileName = " Gradient of Cumulative Excess Deaths in Scotland (age 65 and over) 2021.png"
 
@@ -590,9 +571,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        dpi=300
 )
 
-#GraphCaption <- GraphCaptionOld
-
-
 ###############################################################################
 #
 #
@@ -660,9 +638,6 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        units="mm",
        dpi=300
 )
-
-# GraphCaption <- GraphCaptionOld
-
 
 ##################
 setwd(RootDirectory)
