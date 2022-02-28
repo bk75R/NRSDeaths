@@ -60,7 +60,6 @@ GraphFileNameRoot = as.character(format(Sys.Date(),"%Y-%m-%d"))
 # Define standard graph width and height (mm)
 graphwidth = 250
 graphheight = 175
-NoDays = 60 # How many historic days on the graphs?
 
 ############################################################
 #                                                          #
