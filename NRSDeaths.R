@@ -40,8 +40,18 @@ setwd(RootDirectory) # wd is directory of script
 ###################################################
 
 # Create subtitle and caption
-GraphSubtitle = paste("Created: ",(as.character(format(Sys.Date(),"%d/%m/%Y"))),"\nhttps://www.drowningindata.blog")
-GraphCaption = "Data source: https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/\nweekly-and-monthly-data-on-births-and-deaths/deaths-involving-coronavirus-covid-19-in-scotland/related-statistics"
+GraphSubtitle = paste("Graph by @bouncingkitten | https://www.drowningindata.blog | ","Created ",(as.character(format(Sys.Date(),"%d/%m/%Y"))))
+# Data URL is linked from https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/weekly-and-monthly-data-on-births-and-deaths/deaths-involving-coronavirus-covid-19-in-scotland/related-statistics
+# and the data files used for deaths are:
+# 
+# "Weekly deaths by sex and age group in NHS health boards, 2020 - 2022"
+# https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2022.xlsx"
+# 
+# "Weekly deaths by sex and age group, 2000 to 2019"
+# https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-2000-2019.zip
+
+GraphCaption = "Data source: National Records of Scotland, Deaths involving coronavirus (COVID-19) in Scotland - Related Statistics"
+
 
 # Create root graph filename
 GraphFileNameRoot = as.character(format(Sys.Date(),"%Y-%m-%d"))
