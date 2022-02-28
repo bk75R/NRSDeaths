@@ -40,7 +40,7 @@ Excess deaths were calculated in this way.
 
 ### Average deaths for 2015-2019 were calculated
 
-![2022-02-28 NRS Weekly Deaths by Age (2015-2019, average) - faceted](https://user-images.githubusercontent.com/82215025/155972266-172bff67-39a9-46cc-9c20-b166dc3517c4.png)
+![2022-02-28 NRS Weekly Deaths by Age (2015-2019, average) - faceted](https://user-images.githubusercontent.com/82215025/155989654-3646ec6f-2801-4ac6-b819-2edaf8cac687.png)
 
 These data were used as the "baseline" expected death rate for 2020 to 2022.
 NRS now use 2016-2019 plus 2021 deaths as the baseline for 2022 (https://nrscotland.gov.uk/files/statistics/covid19/covid-deaths-methodology-excess-deaths-in-2022.pdf). **The dataset used here does not yet use the same method as NRS for 2022 excess deaths.** It will be updated to match the method used by NRS.
@@ -49,15 +49,27 @@ NRS now use 2016-2019 plus 2021 deaths as the baseline for 2022 (https://nrscotl
 
 Excess deaths were calculated by subtracting the 2015-2019 average weekly deaths baseline data from the 2020-2022 weekly deaths data for each age group.
 
-![2022-02-28 Excess Deaths in Scotland (2020-2022) - faceted](https://user-images.githubusercontent.com/82215025/155972750-f9b6b5e9-c863-45fd-8650-9a46898f4c9b.png)
+![2022-02-28 Excess Deaths in Scotland (2020-2022) - faceted](https://user-images.githubusercontent.com/82215025/155989702-33019726-369a-4efb-8cf9-9d8ac378ea2f.png)
 
 ## Cumulative excess deaths 
 
 Cumulative excess deaths were also calculated. Graphing cumulative excess deaths can show more clearly when their weekly rate has changed over the year.
 
-![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155980426-5b8649dc-7208-43b6-a862-505fc29934a1.png)
+![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155989769-66797cea-424e-4694-bd1d-7fa3a8fe8aa0.png)
 
-![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155980449-1d4eabaa-7813-4fbd-90e2-3c41058620a0.png)
+![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155989786-49c07f6d-f4b1-4af6-a354-98ce6e06946e.png)
+
+# Data format
+
+The data are available in a `.xlsx` file in the `/data` folder.
+
+## All cause and baseline data
+
+![NRSExcessDeaths excel sheet - all cause and baseline](https://user-images.githubusercontent.com/82215025/155989410-8e98b80d-d476-4025-b1eb-f7f0997a4320.png)
+
+## Mean deaths data
+
+![NRSExcessDeaths excel sheet - mean deaths](https://user-images.githubusercontent.com/82215025/155989460-92bdfa7d-e375-4452-ba50-bc0b0e2ad7bb.png)
 
 ## Licensing
 
