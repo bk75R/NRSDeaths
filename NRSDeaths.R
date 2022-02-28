@@ -75,4 +75,6 @@ source("NRSDeaths_GraphsCheck.R") # Graph deaths data to check it's all there.
 
 source("NRSDeaths_InquiryGraphs.R") # Inquiry graphs, various on cumulative excess deaths and gradient changes.
 
+source("NRSDeaths_WriteDataFiles.R") # Write calculated excess deaths data into files usable in spreadsheets.
+
 setwd(RootDirectory)
