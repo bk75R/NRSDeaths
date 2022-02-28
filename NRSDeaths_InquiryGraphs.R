@@ -75,9 +75,9 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2022_graph,
         panel.grid = element_blank(),
         plot.caption = element_text(hjust = 0))+
   scale_x_continuous(name = "Week number",
-                     #breaks = c(0,10,20,30,40,50),
+                     breaks = c(1,2,3,4,5,6,7,8,9),
                      labels = label_comma(accuracy = 1),
-                     limits = c(NA,NA)
+                     limits = c(0,NA)
                      )+
   scale_y_continuous(name = "Cumulative Excess Deaths",
                      labels = label_comma(accuracy = NULL))+
