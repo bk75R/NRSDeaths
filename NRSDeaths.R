@@ -8,6 +8,7 @@
 
 # Load libraries
 library(readxl)
+library(writexl)
 library(httr)
 library(ggplot2)
 library(tidyr)
