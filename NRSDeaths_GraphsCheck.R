@@ -137,12 +137,23 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
 #
 ###################################
 
+DeathsWeekly_mean_2016_2019_2021_labelled <- cbind.data.frame(DeathsWeekly_mean_2016_2019_2021,rep("2016 to 2019 plus 2021",nrow(DeathsWeekly_mean_2016_2019_2021)))
+colnames(DeathsWeekly_mean_2016_2019_2021_labelled) <- c("Week","Age","Deaths","Baseline")
+DeathsWeekly_mean_2015_2019_labelled <- cbind.data.frame(DeathsWeekly_mean_2015_2019,rep("2015 to 2019",nrow(DeathsWeekly_mean_2015_2019)))
+colnames(DeathsWeekly_mean_2015_2019_labelled) <- c("Week","Age","Deaths","Baseline")
+DeathsWeekly_mean_labelled <- rbind.data.frame(DeathsWeekly_mean_2016_2019_2021_labelled,DeathsWeekly_mean_2015_2019_labelled)
+
+BaselineColours = c("2015 to 2019" = "grey50",
+                    "2016 to 2019 plus 2021" = "black")
+
 GraphFileName = " NRS Weekly Deaths by Age (2016-2019 plus 2021, average) - faceted.png"
 
-NRSWeeklyDeaths_Average_Graph_2022 = ggplot(data = DeathsWeekly_mean_2016_2019_2021,
+NRSWeeklyDeaths_Average_Graph_2022 = ggplot(data = DeathsWeekly_mean_labelled,
                                        mapping = aes(x=Week,
                                                      y=Deaths,
-                                                     group=Age)
+                                                     group=Baseline,
+                                                     colour = Baseline
+                                                     )
 )+
   theme_minimal()+
   theme(panel.background = element_rect(fill = 'white', color = 'white'),
@@ -167,7 +178,9 @@ NRSWeeklyDeaths_Average_Graph_2022 = ggplot(data = DeathsWeekly_mean_2016_2019_2
             show.legend = TRUE)+
   facet_wrap(vars(Age),
              ncol = 4,
-             scales = "free_y")
+             scales = "free_y")+
+  scale_colour_manual(name = "Baseline",
+                      values = BaselineColours)
 
 #Save graph
 ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
