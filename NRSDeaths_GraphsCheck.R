@@ -230,7 +230,7 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All
   scale_y_continuous(name = "Weekly Deaths",
                      #limits = c(-25,100),
                      labels = label_number(accuracy = NULL))+
-  ggtitle("Excess Deaths in Scotland (2020-2022) using 2015-2019 average deaths as baseline",
+  ggtitle("Excess Deaths in Scotland (2020-2022) using average of 2015 to 2019  deaths as baseline",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
   geom_line(size = 0.5,
@@ -287,7 +287,7 @@ NRSWeeklyDeaths_Excess_Graph_2022 = ggplot(data = filter(DeathsTogether2022,Caus
   scale_y_continuous(name = "Weekly Deaths",
                      #limits = c(-25,100),
                      labels = label_number(accuracy = NULL))+
-  ggtitle("Excess Deaths in Scotland (2020-2022) using 2016 to 2019 plus 2021 average deaths as baseline",
+  ggtitle("Excess Deaths in Scotland (2020-2022) using average of 2016 to 2019 plus 2021 deaths as 2022 baseline",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
   geom_line(size = 0.5,
