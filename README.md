@@ -38,18 +38,18 @@ The oldest age group in the "Weekly deaths by sex and age group, 2000 to 2019" d
 
 Excess deaths were calculated in this way.
 
-### Average deaths for 2015-2019 were calculated
-
+### Average deaths for 2015 to 2019 were calculated
 ![2022-02-28 NRS Weekly Deaths by Age (2015-2019, average) - faceted](https://user-images.githubusercontent.com/82215025/155989654-3646ec6f-2801-4ac6-b819-2edaf8cac687.png)
+These data were used as the "baseline" expected death rate for 2020 to 2021.
 
-These data were used as the "baseline" expected death rate for 2020 to 2022.
-NRS now use 2016-2019 plus 2021 deaths as the baseline for 2022 (https://nrscotland.gov.uk/files/statistics/covid19/covid-deaths-methodology-excess-deaths-in-2022.pdf). **The dataset used here does not yet use the same method as NRS for 2022 excess deaths.** It will be updated to match the method used by NRS.
+### Average deaths for 2016 to 2019 plus 2021 were calculated
+![2022-02-28 NRS Weekly Deaths by Age (2016-2019 plus 2021, average) - faceted](https://user-images.githubusercontent.com/82215025/156440945-077dd899-2b1d-408b-a1ac-222abf9ed1e1.png)
+NRS use 2016-2019 plus 2021 deaths as the baseline for 2022 (https://nrscotland.gov.uk/files/statistics/covid19/covid-deaths-methodology-excess-deaths-in-2022.pdf). The same baseline as NRS was used to calculate 2022 excess deaths.
 
 ### Excess deaths were then calculated using the average deaths as the baseline
 
-Excess deaths were calculated by subtracting the 2015-2019 average weekly deaths baseline data from the 2020-2022 weekly deaths data for each age group.
-
-![2022-02-28 Excess Deaths in Scotland (2020-2022) - faceted](https://user-images.githubusercontent.com/82215025/155989702-33019726-369a-4efb-8cf9-9d8ac378ea2f.png)
+Excess deaths were calculated by subtracting the 2015 to 2019 average weekly deaths baseline data from the 2020 and 2021 weekly deaths data, and the 2016 to 2019 plus 2021 average weekly deaths baseline data from the 2022 weekly deaths data, for each age group.
+![2022-03-02 Excess Deaths in Scotland (2020-2022 using updated baseline) - faceted](https://user-images.githubusercontent.com/82215025/156441332-835b5544-7e92-485a-a8a5-42be2f8080b3.png)
 
 ## Cumulative excess deaths 
 
@@ -57,19 +57,22 @@ Cumulative excess deaths were also calculated. Graphing cumulative excess deaths
 
 ![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155989769-66797cea-424e-4694-bd1d-7fa3a8fe8aa0.png)
 
-![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 to 2022 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155989786-49c07f6d-f4b1-4af6-a354-98ce6e06946e.png)
+![2022-03-02 Cumulative Excess Deaths in Scotland, 2020 to 2022 (revised 2022 baseline)](https://user-images.githubusercontent.com/82215025/156439326-ddd857b9-c457-4cf3-bcb9-6497df1b08c4.png)
 
 # Data format
 
 The data are available in a `.xlsx` file in the `/data` folder.
 
-## All cause and baseline data
-
-![NRSExcessDeaths excel sheet - all cause and baseline](https://user-images.githubusercontent.com/82215025/155989410-8e98b80d-d476-4025-b1eb-f7f0997a4320.png)
-
-## Mean deaths data
-
-![NRSExcessDeaths excel sheet - mean deaths](https://user-images.githubusercontent.com/82215025/155989460-92bdfa7d-e375-4452-ba50-bc0b0e2ad7bb.png)
+## Excess deaths
+![NRSExcessDeaths excel sheet - excess](https://user-images.githubusercontent.com/82215025/156439986-95dd178a-6ee2-41b8-94bc-d9dd5138d7b2.png)
+## All cause deaths
+![NRSExcessDeaths excel sheet - all cause](https://user-images.githubusercontent.com/82215025/156440016-360c119e-0458-4f1f-881c-c2400355379d.png)
+## Baseline deaths
+![NRSExcessDeaths excel sheet - baseline](https://user-images.githubusercontent.com/82215025/156440055-55f2ffec-8d94-48fc-9905-38f92a83fa68.png)
+## Mean deaths 2015 to 2019
+![NRSExcessDeaths excel sheet - mean 2015-2019](https://user-images.githubusercontent.com/82215025/156440077-691a6eb7-9da5-4cf6-8a1e-2c4220affa73.png)
+## Mean deaths 2016 to 2019 plus 2021
+![NRSExcessDeaths excel sheet - mean 2016-2019 + 2021](https://user-images.githubusercontent.com/82215025/156440107-913f2a59-73eb-4490-8366-40e901470891.png)
 
 ## Licensing
 
