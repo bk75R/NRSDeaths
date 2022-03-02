@@ -60,7 +60,6 @@ GraphFileNameRoot = as.character(format(Sys.Date(),"%Y-%m-%d"))
 # Define standard graph width and height (mm)
 graphwidth = 250
 graphheight = 175
-NoDays = 60 # How many historic days on the graphs?
 
 ############################################################
 #                                                          #
@@ -71,6 +70,8 @@ NoDays = 60 # How many historic days on the graphs?
 source("NRSDeaths_DataExcelRead.R") # Read the NRS death by HB data and save it.
 
 source("NRSDeaths_2000-2019DataCSVRead.R") # Read 2000-2019 deaths data
+
+source("NRSDeaths_2022Excess.R") # Calculate baseline and excess for 2022
 
 source("NRSDeaths_GraphsCheck.R") # Graph deaths data to check it's all there.
 

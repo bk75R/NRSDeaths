@@ -129,6 +129,69 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        dpi=300
 )
 
+###################################
+#
+#
+# Average Weekly deaths by age (All) (Scotland) [2016-2019 plus 2021]
+#
+#
+###################################
+
+DeathsWeekly_mean_2016_2019_2021_labelled <- cbind.data.frame(DeathsWeekly_mean_2016_2019_2021,rep("2016 to 2019 plus 2021",nrow(DeathsWeekly_mean_2016_2019_2021)))
+colnames(DeathsWeekly_mean_2016_2019_2021_labelled) <- c("Week","Age","Deaths","Baseline")
+DeathsWeekly_mean_2015_2019_labelled <- cbind.data.frame(DeathsWeekly_mean_2015_2019,rep("2015 to 2019",nrow(DeathsWeekly_mean_2015_2019)))
+colnames(DeathsWeekly_mean_2015_2019_labelled) <- c("Week","Age","Deaths","Baseline")
+DeathsWeekly_mean_labelled <- rbind.data.frame(DeathsWeekly_mean_2016_2019_2021_labelled,DeathsWeekly_mean_2015_2019_labelled)
+
+BaselineColours = c("2015 to 2019" = "grey50",
+                    "2016 to 2019 plus 2021" = "black")
+
+GraphFileName = " NRS Weekly Deaths by Age (2016-2019 plus 2021, average) - faceted.png"
+
+NRSWeeklyDeaths_Average_Graph_2022 = ggplot(data = DeathsWeekly_mean_labelled,
+                                       mapping = aes(x=Week,
+                                                     y=Deaths,
+                                                     group=Baseline,
+                                                     colour = Baseline
+                                                     )
+)+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = 'white', color = 'white'),
+        plot.background = element_rect(fill = 'white', color = 'white'),
+        legend.position="bottom",
+        legend.justification = "centre",
+        strip.background = element_blank(),
+        strip.placement = "outside",
+        plot.caption = element_text(hjust = 0)
+  )+
+  scale_x_continuous(name = "Week number",
+                     breaks = c(0,10,20,30,40,50))+
+  scale_y_continuous(name = "Weekly Deaths",
+                     limits = c(NA,NA),
+                     labels = label_number(accuracy = NULL))+
+  ggtitle("NRS Weekly Deaths by Age (2016 to 2019 plus 2021, average)",
+          subtitle = GraphSubtitle)+
+  labs(caption = GraphCaption)+
+  geom_line(size = 0.5,
+            alpha = 1,
+            linetype = 1,
+            show.legend = TRUE)+
+  facet_wrap(vars(Age),
+             ncol = 4,
+             scales = "free_y")+
+  scale_colour_manual(name = "Baseline",
+                      values = BaselineColours)
+
+#Save graph
+ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
+       plot = NRSWeeklyDeaths_Average_Graph_2022,
+       device="png",
+       width=graphwidth,
+       height=graphheight,
+       units="mm",
+       dpi=300
+)
+
 ###########################################
 # Calculate summary data
 ###########################################
@@ -180,7 +243,7 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All
   scale_y_continuous(name = "Weekly Deaths",
                      #limits = c(-25,100),
                      labels = label_number(accuracy = NULL))+
-  ggtitle("Excess Deaths in Scotland (2020-2022) using 2015-2019 average deaths as baseline",
+  ggtitle("Excess Deaths in Scotland (2020-2022) using average of 2015 to 2019  deaths as baseline",
           subtitle = GraphSubtitle)+
   labs(caption = GraphCaption)+
   geom_line(size = 0.5,
@@ -195,6 +258,63 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = filter(DeathsTogether,Cause == "All
 #Save graph
 ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
        plot = NRSWeeklyDeaths_Excess_Graph,
+       device="png",
+       width=graphwidth*2,
+       height=graphheight,
+       units="mm",
+       dpi=300
+)
+
+###########################################
+
+###################################
+#
+#
+# ExcessDeaths - faceted (2022 NRS baseline)
+#
+#
+###################################
+
+GraphFileName = " Excess Deaths in Scotland (2020-2022 using updated baseline) - faceted.png"
+
+NRSWeeklyDeaths_Excess_Graph_2022 = ggplot(data = filter(DeathsTogether2022,Cause == "All"),
+                                      mapping = aes(x=Date,
+                                                    y=Excess,
+                                                    group=Age)
+)+
+  theme_minimal()+
+  theme(panel.background = element_rect(fill = 'white', color = 'white'),
+        plot.background = element_rect(fill = 'white', color = 'white'),
+        legend.position="bottom",
+        legend.justification = "centre",
+        strip.background = element_blank(),
+        strip.placement = "outside",
+        #panel.grid = element_blank(),
+        plot.caption = element_text(hjust = 0)
+  )+
+  scale_x_date(#limits = c(as.Date("2021-04-01"),NA),
+    name = "Date",
+    #date_breaks = "12 months",
+    breaks = c(as.Date("2020-01-01"),as.Date("2021-01-01"),as.Date("2022-01-01")),
+    date_labels = "%Y")+
+  scale_y_continuous(name = "Weekly Deaths",
+                     #limits = c(-25,100),
+                     labels = label_number(accuracy = NULL))+
+  ggtitle("Excess Deaths in Scotland (2020-2022) using average of 2016 to 2019 plus 2021 deaths as 2022 baseline",
+          subtitle = GraphSubtitle)+
+  labs(caption = GraphCaption)+
+  geom_line(size = 0.5,
+            alpha = 1,
+            #linetype = 1,
+            #aes(),
+            show.legend = TRUE)+
+  facet_wrap(vars(Age),
+             ncol = 4,
+             scales = "free_y")
+
+#Save graph
+ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
+       plot = NRSWeeklyDeaths_Excess_Graph_2022,
        device="png",
        width=graphwidth*2,
        height=graphheight,
