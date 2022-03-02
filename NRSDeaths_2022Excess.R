@@ -95,6 +95,28 @@ DeathsTogether2022$Age <- factor(DeathsTogether2022$Age, levels=c("0","1 to 4","
                                                                     "60 to 64","65 to 69","70 to 74",
                                                                     "75 to 79","80 to 84","85 to 89",
                                                                     "90+"))
+###################################################################
+#                                                                 #
+# Add df for revised 2022 baseline cumulative excess deaths data  #
+#                                                                 #
+###################################################################
+
+DeathsTogetherCum2022revised <- DeathsTogether2022 %>%
+  filter(Date >= as.Date("2022-01-01") & Date <= as.Date("2022-12-31")) %>%
+  filter(Cause == "All") %>%
+  group_by(Age) %>%
+  mutate(cumDeaths = cumsum(Deaths)) %>%
+  mutate(cumExcess = cumsum(Excess))
+
+DeathsTogetherCum2020_2022_revised <- rbind.data.frame(DeathsTogetherCum2020,DeathsTogetherCum2021,DeathsTogetherCum2022revised)
+
+# Add year, ISO week and gradient of cumExcess and cumDeaths.
+DeathsTogetherCum2020_2022_revised <- DeathsTogetherCum2020_2022_revised %>%
+  group_by(Age) %>%
+  mutate(Year = as.factor(isoyear(Date))) %>%
+  mutate(WeekNo = isoweek(Date)) %>%
+  mutate(gradcumExcess = (cumExcess - lag(cumExcess))/(WeekNo - lag(WeekNo))) %>%
+  mutate(gradcumDeaths = (cumDeaths - lag(cumDeaths))/(WeekNo - lag(WeekNo)))
 
 #################################
 setwd(RootDirectory)

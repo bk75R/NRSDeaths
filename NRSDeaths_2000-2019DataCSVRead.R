@@ -257,6 +257,48 @@ DeathsTogether$Age <- factor(DeathsTogether$Age, levels=c("0","1 to 4","5 to 9",
                                                           "60 to 64","65 to 69","70 to 74",
                                                           "75 to 79","80 to 84","85 to 89",
                                                           "90+"))
+###################################################
+#                                                 #
+# Add cumulative deaths to DeathsTogether df      #
+#                                                 #
+###################################################
 
+# May need a different data frame as this doesn't include COVID/non-COVID split. Just all causes & expected.
+
+DeathsTogetherCum2020 <- DeathsTogether %>%
+  filter(Date >= as.Date("2019-12-01") & Date <= as.Date("2020-12-31")) %>%
+  filter(Cause == "All") %>%
+  group_by(Age) %>%
+  mutate(cumDeaths = cumsum(Deaths)) %>%
+  mutate(cumExcess = cumsum(Excess))
+
+DeathsTogetherCum2021 <- DeathsTogether %>%
+  filter(Date >= as.Date("2021-01-01") & Date <= as.Date("2021-12-31")) %>%
+  filter(Cause == "All") %>%
+  group_by(Age) %>%
+  mutate(cumDeaths = cumsum(Deaths)) %>%
+  mutate(cumExcess = cumsum(Excess))
+
+DeathsTogetherCum2022 <- DeathsTogether %>%
+  filter(Date >= as.Date("2022-01-01") & Date <= as.Date("2022-12-31")) %>%
+  filter(Cause == "All") %>%
+  group_by(Age) %>%
+  mutate(cumDeaths = cumsum(Deaths)) %>%
+  mutate(cumExcess = cumsum(Excess))
+
+DeathsTogetherCum2020_2022 <- rbind.data.frame(DeathsTogetherCum2020,DeathsTogetherCum2021,DeathsTogetherCum2022)
+
+# Add year, ISO week and gradient of cumExcess and cumDeaths.
+DeathsTogetherCum2020_2022 <- DeathsTogetherCum2020_2022 %>%
+  group_by(Age) %>%
+  mutate(Year = as.factor(isoyear(Date))) %>%
+  mutate(WeekNo = isoweek(Date)) %>%
+  mutate(gradcumExcess = (cumExcess - lag(cumExcess))/(WeekNo - lag(WeekNo))) %>%
+  mutate(gradcumDeaths = (cumDeaths - lag(cumDeaths))/(WeekNo - lag(WeekNo)))
+
+DeathsTogetherCum2020_2021 <- filter(DeathsTogetherCum2020_2022,Date < as.Date("2022-01-01"))
+
+
+############################
 
 setwd(RootDirectory)
