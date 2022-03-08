@@ -156,12 +156,11 @@ ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
 #
 ###############################################################################
 
-YearColours = c("2020" = "grey25",
-                "2021" = "grey50",
-                "2022" = "black")
-YearLineThicknesses = c("2020" = 0.25,
-                        "2021" = 1,
-                        "2022" = 1)
+# Line colours and thicknesses for 2020 to 2021
+YearColours20_21 <- c("2020" = "grey25",
+                      "2021" = "grey50")
+YearLineThicknesses20_21 <- c("2020" = 0.25,
+                              "2021" = 1)
 
 GraphFileName = " Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group).png"
 
@@ -184,7 +183,7 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2021,
         panel.grid = element_blank(),
         plot.caption = element_text(hjust = 0))+
   scale_x_continuous(name = "Week number",
-                     breaks = c(0,10,20,30,40,50))+
+                     breaks = c(10,20,30,40,50))+
   scale_y_continuous(name = "Cumulative Excess Deaths",
                      labels = scales::comma)+
   ggtitle("Cumulative Excess Deaths in Scotland, 2020 and 2021",
@@ -201,9 +200,9 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2021,
              ncol = 5,
              scales = "free_y")+
   scale_colour_manual(name = "Year",
-                      values = YearColours)+
+                      values = YearColours20_21)+
   scale_size_manual(name = "Year",
-                    values = YearLineThicknesses)
+                    values = YearLineThicknesses20_21)
 
 #Save graph
 ggsave(filename = paste(GraphFileNameRoot,GraphFileName,sep=""),
