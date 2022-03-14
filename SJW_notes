@@ -1,0 +1,7 @@
+# Stewart's notes
+
+setwd('M:\\STEWART\\12-18 Edin Uni PhD\\My_R_and_Statistics\\TIDYVERSE\\SteveR\\tryandreproducefromfirstprinciples\\REPRO3')
+
+NewDataFolderName <- "data"
+
+dir.create(file.path(dirname(DataDirectory), NewDataFolderName))

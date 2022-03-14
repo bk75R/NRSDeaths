@@ -19,6 +19,9 @@ library(ISOweek)
 library(facetscales)
 library(scales)
 
+
+
+
 ###########################
 #                         #
 # Create paths            #
@@ -27,8 +30,18 @@ library(scales)
 
 # Set working directories
 RootDirectory <- getwd() # This should be the directory in which the .R file is found.
+
 DataDirectory <- paste(RootDirectory,"/data",sep = "")
+NewDataFolderName <- "data"
+dir.create(file.path(dirname(DataDirectory), NewDataFolderName))
+
+
 NRSAgesDataDirectory <- paste(RootDirectory,"/data/NRSAgesData",sep = "")
+NewDataFolderName <- "NRSAgesData"
+dir.create(file.path(dirname(NRSAgesDataDirectory), NewDataFolderName))
+
+
+
 GraphsDirectory <- paste(RootDirectory,"/graphs",sep = "")
 
 setwd(RootDirectory) # wd is directory of script
@@ -44,10 +57,10 @@ setwd(RootDirectory) # wd is directory of script
 GraphSubtitle = paste("Graph by @bouncingkitten | https://www.drowningindata.blog | ","Created ",(as.character(format(Sys.Date(),"%d/%m/%Y"))))
 # Data URL is linked from https://www.nrscotland.gov.uk/statistics-and-data/statistics/statistics-by-theme/vital-events/general-publications/weekly-and-monthly-data-on-births-and-deaths/deaths-involving-coronavirus-covid-19-in-scotland/related-statistics
 # and the data files used for deaths are:
-# 
+#
 # "Weekly deaths by sex and age group in NHS health boards, 2020 - 2022"
 # https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-group-health-board-2020-2022.xlsx
-# 
+#
 # "Weekly deaths by sex and age group, 2000 to 2019"
 # https://www.nrscotland.gov.uk/files//statistics/covid19/weekly-deaths-by-sex-age-2000-2019.zip
 
