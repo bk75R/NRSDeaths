@@ -1,5 +1,5 @@
 # NRSDeaths
-Calculating and reformatting NRS weekly deaths data for all available detailed age categories.
+Calculating and reformatting National Records of Scotland (NRS) weekly deaths data for all available detailed age categories.
 
 This code and data are being made available here because the National Records of Scotland (NRS) doesn't make excess deaths data available in a more detailed format for presenting and analysing deaths by age group in Scotland.
 
