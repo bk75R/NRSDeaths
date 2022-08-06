@@ -43,10 +43,10 @@ NRSWeeklyDeaths_Excess_Graph = ggplot(data = DeathsTogetherCum2020_2022_graph,
   scale_x_continuous(name = "Week number",
                      # breaks = c(1,2,3,4,5,6,7,8,9), # Needs more weeks
                      # breaks = seq(1,max(DeathsTogetherCum2020_2022_revised_graph$WeekNo),1), # Too many weeks
-                     breaks = seq(5,max(DeathsTogetherCum2020_2022_revised_graph$WeekNo),5), # Just right?
+                     breaks = seq(5,max(DeathsTogetherCum2020_2022_graph$WeekNo),5), # Just right?
                      labels = label_comma(accuracy = 1),
                      # limits = c(0,NA) # No defined max limit
-                     limits = c(0,max(DeathsTogetherCum2020_2022_revised_graph$WeekNo)) # Max limit same as max(WeekNo)
+                     limits = c(0,max(DeathsTogetherCum2020_2022_graph$WeekNo)) # Max limit same as max(WeekNo)
                      )+
   scale_y_continuous(name = "Cumulative Excess Deaths",
                      labels = label_comma(accuracy = NULL))+
