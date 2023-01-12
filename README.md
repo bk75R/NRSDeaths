@@ -59,7 +59,7 @@ Cumulative excess deaths were also calculated. Graphing cumulative excess deaths
 
 ![2022-02-28 Cumulative Excess Deaths in Scotland, 2020 and 2021 (faceted by age group)](https://user-images.githubusercontent.com/82215025/155989769-66797cea-424e-4694-bd1d-7fa3a8fe8aa0.png)
 
-![2022-03-02 Cumulative Excess Deaths in Scotland, 2020 to 2022 (revised 2022 baseline)](https://user-images.githubusercontent.com/82215025/156439326-ddd857b9-c457-4cf3-bcb9-6497df1b08c4.png)
+![2023-01-12 Cumulative Excess Deaths in Scotland, 2020 to 2022 (revised 2022 baseline)](https://github.com/bk75R/NRSDeaths/blob/main/graphs/2023-01-12%20Cumulative%20Excess%20Deaths%20in%20Scotland%2C%202020%20to%202022%20(revised%202022%20baseline).png)
 
 # Data format
 
