@@ -83,7 +83,10 @@ NRSDeaths_AllSum_refactored = NRSDeaths_AllSum_refactored %>%
   complete(Date,nesting(Age,Cause),fill = list(Deaths = 0)) # This df has missing values - where deaths were 0 for a given factor on a certain date, the value was missed out.
 
 # Form final DeathsTogether data frame.
-DeathsTogether2022 = bind_rows(select(DeathsWeekly_ExcessBaseline_2022_trim,Date,Age,Deaths,Cause),NRSDeaths_AllSum_refactored) %>%
+
+NRSDeaths_AllSum_refactored_2022 <- filter(NRSDeaths_AllSum_refactored, Date < as.Date("2023-01-01"))
+DeathsTogether2022 = bind_rows(select(DeathsWeekly_ExcessBaseline_2022_trim,Date,Age,Deaths,Cause),NRSDeaths_AllSum_refactored_2022) %>%
+  #filter(Year == 2022) %>%
   group_by(Date,Age) %>% # Age factors are named differently.
   mutate(Excess = Deaths[Cause == "All"] - Deaths[Cause == "Baseline"])
 
